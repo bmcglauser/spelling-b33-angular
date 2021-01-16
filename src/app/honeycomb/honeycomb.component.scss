@@ -1,0 +1,57 @@
+$button-color: rgb(224, 224, 224);
+$center-color: rgb(248, 240, 131);
+
+.honeycomb-wrapper {
+  display: flex;
+  justify-content: center;
+  .column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: -25px;
+  
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+  .hex-wrapper {
+    display: grid;
+    > * {
+      grid-row: 1;
+      grid-column: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    p {
+      font-size:2.5em;
+      font-weight: bold;
+      user-select: none;
+      pointer-events: none;
+    }
+    svg {
+      margin: 5px 0;
+
+      polygon {
+        fill: $button-color;
+        stroke: black;
+        
+        &:hover{
+          fill:adjust-color($color: $button-color, $lightness: -10%)
+        }
+        &:active{
+          fill:adjust-color($color: $button-color, $lightness: -15%)
+        }
+        &.centerHex {
+          fill: $center-color;
+          &:hover{
+            fill:adjust-color($color: $center-color, $lightness: -10%)
+          }
+          &:active{
+            fill:adjust-color($color: $center-color, $lightness: -20%)
+          }
+        }
+      }
+    }
+  }
+}
