@@ -1,3 +1,6 @@
+$button-color: rgb(224, 224, 224);
+$center-color: rgb(248, 240, 131);
+
 .letter-display-wrapper {
   border: solid;
   height: 5rem;
@@ -8,4 +11,33 @@
   justify-content: center;
   user-select: none;
   margin: 1rem;
+}
+
+.buttons-wrapper {
+  display: flex;
+  justify-content: center;
+
+  > button {
+    margin: 1rem;
+    padding: .8rem;
+    border: solid;
+    border-radius: 5px;
+    align-self: center;
+    &:hover {
+      background-color: adjust-color($color: $center-color, $lightness: 15%)
+    }
+    &:focus {
+      outline: none;
+      background-color: adjust-color($color: $center-color, $lightness: 25%)
+    }
+    &:active {
+      background-color: adjust-color($color: $center-color, $lightness: 5%)
+    }
+  
+    > * {
+      pointer-events: none;
+      user-select: none;
+      font-size: 3rem;
+    }
+  }
 }

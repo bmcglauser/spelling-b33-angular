@@ -1,4 +1,15 @@
 <div class="letter-display-wrapper">
-  <p>{{selectLetterService.chosenLetters.join('')}}</p>
+  <p>{{selectLetterService.selectedLetters.join('')}}</p>
 </div>
 <app-honeycomb></app-honeycomb>
+<div class="buttons-wrapper">
+  <button class="delete-button" (click)="selectLetterService.clear()">
+    <i class="material-icons">delete_outline</i>
+  </button>
+  <button class="scramble-button" (click)="allLettersService.scramblePerimLetters()">
+    <i class="material-icons">cached</i>
+  </button>
+  <button class="submit-button" (click)="submitWord()">
+    <i class="material-icons">upgrade</i>
+  </button>
+</div>

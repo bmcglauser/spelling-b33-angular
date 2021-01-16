@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AllLettersService } from '../all-letters.service';
 import { SelectLetterService } from '../select-letter.service';
 
 @Component({
@@ -7,12 +8,11 @@ import { SelectLetterService } from '../select-letter.service';
   styleUrls: ['./honeycomb.component.scss']
 })
 export class HoneycombComponent implements OnInit {
-  perimArr: string[];
-  centerLetter: string;
 
-  constructor(public selectLetterService: SelectLetterService) {
-    this.perimArr = ['B', 'C', 'D', 'E', 'F', 'G'];
-    this.centerLetter = 'A';
+  constructor(
+    public selectLetterService: SelectLetterService,
+    public allLettersService: AllLettersService
+    ) {
   }
 
   ngOnInit(): void {
