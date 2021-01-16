@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AllLettersService } from '../all-letters.service';
+import { ScoreService } from '../score.service';
 import { SelectLetterService } from '../select-letter.service';
 
 
@@ -12,7 +13,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     public selectLetterService: SelectLetterService,
-    public allLettersService: AllLettersService
+    public allLettersService: AllLettersService,
+    public scoreService: ScoreService
     ) { }
 
   ngOnInit(): void {
@@ -27,19 +29,18 @@ export class DashboardComponent implements OnInit {
     for (let letter of selectedLetters) {
       if (letter === this.allLettersService.centerLetter) centerPresent = true;
     }
-    if (!selectedLetters.length || selectedLetters.length < 4) {
+    let word = selectedLetters.join('');
+    if (!word.length || word.length < 4) {
       console.log('too short')
       // too short
     } else if (!centerPresent) {
       console.log('no center')
       // no center
-    } else if (this.checkWord(selectedLetters.join(''))) {
-      let pointsToAdd = selectedLetters.length === 4 ? 1 : selectedLetters.length;
+    } else if (this.checkWord(word)) {
+      this.scoreService.addFound(word);
       console.log('good word')
-      console.log('points: ', pointsToAdd)
+      console.log(this.scoreService.totalPoints)
       // good word message
-      // add score to total
-      // add found word
     } else {
       console.log('not a word')
       // not a word message

@@ -1,9 +1,17 @@
+<div class="score-display-wrapper">
+  <span>Score: {{scoreService.totalPoints}}</span>
+  <ul>
+    <li *ngFor="let word of scoreService.foundWords">
+      {{word}}
+    </li>
+  </ul>
+</div>
 <div class="letter-display-wrapper">
   <p>{{selectLetterService.selectedLetters.join('')}}</p>
 </div>
 <app-honeycomb></app-honeycomb>
 <div class="buttons-wrapper">
-  <button class="delete-button" (click)="selectLetterService.clear()">
+  <button class="delete-button" (click)="selectLetterService.backspace()">
     <i class="material-icons">delete_outline</i>
   </button>
   <button class="scramble-button" (click)="allLettersService.scramblePerimLetters()">
